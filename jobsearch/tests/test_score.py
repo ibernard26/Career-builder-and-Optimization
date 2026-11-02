@@ -46,6 +46,8 @@ class Parsing(unittest.TestCase):
         self.assertEqual(score.degree_required("Bachelor's degree required"), "bachelors")
         self.assertEqual(score.degree_required("Bachelor's degree or equivalent experience"), "bachelors_or_experience")
         self.assertEqual(score.degree_required("PhD in physics"), "phd")
+        self.assertEqual(score.degree_required("Bachelor's with 5 years, or Master's with 3 years"), "bachelors")
+        self.assertEqual(score.degree_required("Bachelor's degree preferred."), "bachelors_or_experience")
 
     def test_pay(self):
         self.assertEqual(score.pay_range("Pay: $45.00 - $55.00 per hour"), (45.0, 55.0, "hour"))
@@ -58,6 +60,30 @@ class Parsing(unittest.TestCase):
         self.assertEqual(_workday_posted("Posted Today", today), "2026-11-02")
         self.assertEqual(_workday_posted("Posted 3 Days Ago", today), "2026-10-30")
         self.assertEqual(_workday_posted("Posted 30+ Days Ago", today), "2026-10-03")
+
+
+class Locations(unittest.TestCase):
+    def area(self, loc, **kw):
+        return score.location_area({"location": loc, **kw}, CFG)
+
+    def test_formats(self):
+        self.assertEqual(self.area("USA VA Sterling"), "washington_dc")
+        self.assertEqual(self.area("Chantilly, VA"), "washington_dc")
+        self.assertEqual(self.area("US-NJ-MOORESTOWN-130 ~ Route 38"), "nyc_metro")
+        self.assertEqual(self.area("Liverpool, NY"), "syracuse")
+        self.assertEqual(self.area("Philadelphia, PA"), "philadelphia")
+
+    def test_lookalikes_rejected(self):
+        self.assertIsNone(self.area("Springfield, MA"))
+        self.assertIsNone(self.area("Liverpool, United Kingdom"))
+        self.assertIsNone(self.area("Seattle, Washington"))
+        self.assertIsNone(self.area("Costa Mesa, California, United States"))
+        self.assertIsNone(self.area("Everett, WA, US"))
+        self.assertIsNone(self.area("Columbia, SC"))
+
+    def test_remote(self):
+        self.assertEqual(self.area("USA - Nationwide Remote USA"), "remote")
+        self.assertIsNone(self.area("Remote - Canada"))
 
 
 class Scoring(unittest.TestCase):

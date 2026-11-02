@@ -54,19 +54,33 @@ def years_required(text: str) -> int | None:
     return min(vals) if vals else None  # the lowest stated bar is usually the minimum
 
 
+DEGREE_PATTERNS = [  # lowest first
+    ("associates", r"associate'?s degree|associate degree"),
+    ("bachelors", r"bachelor'?s|\bb\.s\.|\bb\.a\.|\bbs\b|\bba\b|undergraduate degree|4-year degree|four-year degree"),
+    ("masters", r"master'?s|\bm\.s\.|\bms\b|\bmba\b|\bmfe\b"),
+    ("phd", r"ph\.?d|doctorate"),
+]
+
+
+def degree_mentions(text: str) -> list[tuple[str, bool]]:
+    """Every degree level named, with whether its sentence calls it preferred / optional."""
+    out = []
+    for sent in re.split(r"(?<=[.;\n])\s+", text.lower()):
+        soft = re.search(r"preferred|a plus|desired|nice to have|or equivalent|in lieu|equivalent combination", sent) is not None
+        for level, rx in DEGREE_PATTERNS:
+            if re.search(rx, sent):
+                out.append((level, soft))
+    return out
+
+
 def degree_required(text: str) -> str | None:
-    t = text.lower()
-    if re.search(r"\b(ph\.?d|doctorate)\b", t):
-        level = "phd"
-    elif re.search(r"\b(master'?s|m\.s\.|mba|mfe)\b", t):
-        level = "masters"
-    elif re.search(r"\b(bachelor'?s|b\.s\.|b\.a\.|undergraduate degree|4-year degree|four-year degree)\b", t):
-        level = "bachelors"
-    elif re.search(r"\b(associate'?s degree)\b", t):
-        level = "associates"
-    else:
+    """Lowest degree level the posting names; '_or_experience' when it's preferred or can be substituted."""
+    m = degree_mentions(text)
+    if not m:
         return None
-    if re.search(r"or equivalent (?:work |professional )?experience|in lieu of (?:a )?degree|equivalent combination", t):
+    order = [l for l, _ in DEGREE_PATTERNS]
+    level = min((l for l, _ in m), key=order.index)
+    if all(soft for l, soft in m if l == level) or re.search(r"or equivalent (?:work |professional )?experience|in lieu of (?:a )?degree|equivalent combination", text.lower()):
         level += "_or_experience"
     return level
 
@@ -82,7 +96,7 @@ def clearance_required(text: str) -> str | None:
     return None
 
 
-PAY_RE = re.compile(r"\$\s?(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?)\s*(k)?(?:\s*(?:-|–|to)\s*\$?\s?(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?)\s*(k)?)?\s*(?:per|/|an|a)?\s*(hour|hr|year|yr|annually|annual)?", re.I)
+PAY_RE = re.compile(r"\$\s?(\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?)\s*(k)?(?:\s*(?:-|–|to)\s*\$?\s?(\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?)\s*(k)?)?\s*(?:per|/|an|a)?\s*(hour|hr|year|yr|annually|annual)?", re.I)
 
 
 def pay_range(text: str) -> tuple[float, float, str] | None:
@@ -103,16 +117,47 @@ def pay_range(text: str) -> tuple[float, float, str] | None:
     return None
 
 
+US_STATES = {"al","ak","az","ar","ca","co","ct","de","dc","fl","ga","hi","id","il","in","ia","ks","ky","la","me","md","ma",
+             "mi","mn","ms","mo","mt","ne","nv","nh","nj","nm","ny","nc","nd","oh","ok","or","pa","ri","sc","sd","tn","tx",
+             "ut","vt","va","wa","wv","wi","wy"}
+
+
+STATE_NAMES = {"alabama","alaska","arizona","arkansas","california","colorado","connecticut","delaware","florida","georgia",
+               "hawaii","idaho","illinois","indiana","iowa","kansas","kentucky","louisiana","maine","maryland","massachusetts",
+               "michigan","minnesota","mississippi","missouri","montana","nebraska","nevada","new hampshire","new jersey",
+               "new mexico","new york","north carolina","north dakota","ohio","oklahoma","oregon","pennsylvania","rhode island",
+               "south carolina","south dakota","tennessee","texas","utah","vermont","virginia","washington","west virginia",
+               "wisconsin","wyoming","district of columbia"}
+
+
 def location_area(job, cfg) -> str | None:
-    loc = (job.get("location") or "").lower()
-    for area, words in cfg["locations"].items():
+    """Workday writes 'USA VA Sterling' or 'US-TX-MCKINNEY-...'; others write 'Sterling, VA'."""
+    if non_us(job, cfg):
+        return None
+    loc = re.sub(r"[-_,;/|~()]", " ", (job.get("location") or "").lower())
+    loc = re.sub(r"\s+", " ", loc)
+    raw = (job.get("location") or "").lower()
+    named_states = {t for t in loc.split() if t in US_STATES}
+    if re.search(r",\s*washington\b(?!\s*,?\s*(d\.?\s?c|district))", raw):
+        named_states.add("wa")  # "Seattle, Washington" is the state, not D.C.
+    # A full state name counts too, except "washington"/"new york", which are also city names
+    named_states |= {n for n in STATE_NAMES if n not in ("washington", "new york") and has(loc, n)
+                     and not (n == "virginia" and has(loc, "west virginia"))}
+    for area, spec in cfg["locations"].items():
         if area.startswith("_"):
             continue
-        if any(w in loc for w in words):
+        area_states = set(spec["states"])
+        state_ok = not named_states or named_states & area_states or any(has(loc, s) for s in area_states if " " in s)
+        if state_ok and any(has(loc, c) for c in spec["cities"]):
             return area
-    if job.get("remote") and cfg.get("remote_counts_as_match"):
+    if (job.get("remote") or has(loc, "remote")) and cfg.get("remote_counts_as_match") and not non_us(job, cfg):
         return "remote"
     return None
+
+
+def non_us(job, cfg) -> bool:
+    loc = (job.get("location") or "").lower()
+    return any(has(loc, w) for w in cfg["non_us_words"])
 
 
 # ---- scoring --------------------------------------------------------------
@@ -167,7 +212,9 @@ def score_apply(job, cfg, prof):
     if clr in ("secret", "unspecified"):
         pts += 10; why.append("clearance wanted: your inactive Secret is an edge")
     elif clr == "top_secret":
-        pts += 4; gaps.append("Top Secret/SCI required (you held Secret)")
+        poly = has(text, "polygraph") or has(text, "poly")
+        pts -= 10 if poly else 0
+        gaps.append("Top Secret/SCI" + (" with polygraph" if poly else "") + " required (you held Secret)")
     else:
         pts += 5
 
@@ -201,8 +248,8 @@ def finance_gaps(bench, cfg, prof, out: Path):
     deg, fields, skills, certs, yrs = Counter(), Counter(), Counter(), Counter(), []
     for j in bench:
         text = f"{j['title']}\n{j['description']}".lower()
-        d = degree_required(text)
-        deg[(d or "not stated").replace("_or_experience", " (or experience)")] += 1
+        levels = {l for l, _ in degree_mentions(text)}
+        deg.update(levels or {"not stated"})
         fields.update(set(any_of(text, fv["fields"])))
         skills.update(set(any_of(text, fv["skills"])))
         certs.update(set(any_of(text, fv["certifications"])))
@@ -257,11 +304,15 @@ def main(path, profile=ROOT / "private" / "profile.json"):
     applies, bench = [], []
     for j in uniq:
         track, fam = classify(j["title"], cfg)
-        if not track or not fresh(j, cfg["posted_within_days"]):
+        if not track:
             continue
         j["track"], j["family"] = track, fam
-        if track == "benchmark":
+        if any_of(j["title"].lower(), cfg["exclude_title_words"]):
+            continue
+        if track == "benchmark":  # any age: more postings make a better gap picture
             bench.append(j)
+            continue
+        if not fresh(j, cfg["posted_within_days"]) or non_us(j, cfg):
             continue
         s, why, gaps, flags, pay, area = score_apply(j, cfg, prof)
         j.update(score=s, why=why, gaps=gaps, flags=flags, area=area,
@@ -270,7 +321,12 @@ def main(path, profile=ROOT / "private" / "profile.json"):
 
     applies.sort(key=lambda j: -j["score"])
     thr = cfg["strong_match_threshold"]
-    strong = [j for j in applies if j["score"] >= thr and "outside priority areas" not in j["flags"]]
+    def blocked(j):
+        g = " ".join(j["gaps"])
+        return (re.search(r"(bachelors|masters|phd) degree required", g) or "polygraph" in g
+                or "manager/principal" in g or re.search(r"asks \d+\+ yrs(?! \(you have)", g))
+    strong = [j for j in applies if j["score"] >= thr and j["area"]
+              and not any("below your" in f for f in j["flags"]) and not blocked(j)]
 
     with (src.parent / "scored.csv").open("w", newline="") as f:
         w = csv.writer(f)
