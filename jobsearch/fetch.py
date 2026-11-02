@@ -26,6 +26,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -158,6 +159,40 @@ def workday(company, slug, keywords=(), max_days=7, **_):
             offset += 20
 
 
+def eightfold(company, slug, keywords=(), max_days=7, **_):
+    """slug = host|domain, e.g. lockheedmartin.eightfold.ai|lockheedmartin.com"""
+    host, domain = slug.split("|")
+    cutoff = time.time() - max_days * 86400
+    seen = set()
+    for kw in keywords:
+        start = 0
+        while start < 300:
+            q = urllib.parse.urlencode({"domain": domain, "query": kw, "start": start, "sort_by": "timestamp"})
+            posts = (http_json(f"https://{host}/api/pcsx/search?{q}").get("data") or {}).get("positions") or []
+            old = False
+            for p in posts:
+                if (p.get("postedTs") or 0) < cutoff:
+                    old = True
+                    continue
+                if p["id"] in seen:
+                    continue
+                seen.add(p["id"])
+                try:
+                    q2 = urllib.parse.urlencode({"position_id": p["id"], "domain": domain})
+                    info = http_json(f"https://{host}/api/pcsx/position_details?{q2}").get("data") or {}
+                except Exception:
+                    info = {}
+                facts = [f"{k}: {', '.join(v) if isinstance(v, list) else v}" for k, v in info.items()
+                         if k.startswith("efcustomText") and v]
+                yield job(company, "eightfold", p["id"], p.get("name"), "; ".join(p.get("locations") or []),
+                          f"https://{host}{p.get('positionUrl', '')}", iso((p.get("postedTs") or 0) * 1000),
+                          strip_html(info.get("jobDescription")) + "\n" + "\n".join(facts),
+                          remote=(p.get("workLocationOption") == "remote"))
+            if old or len(posts) < 10:
+                break
+            start += 10
+
+
 def usajobs(keywords=(), max_days=7, **_):
     key, email = os.environ.get("USAJOBS_API_KEY"), os.environ.get("USAJOBS_EMAIL")
     if not (key and email):
@@ -182,13 +217,14 @@ def usajobs(keywords=(), max_days=7, **_):
                       desc, extra={"grade": f"{grade}-{details.get('LowGrade','')}/{details.get('HighGrade','')}"})
 
 
-ADAPTERS = {"greenhouse": greenhouse, "lever": lever, "ashby": ashby, "workday": workday}
+ADAPTERS = {"greenhouse": greenhouse, "lever": lever, "ashby": ashby, "workday": workday, "eightfold": eightfold}
 
 
-def search_keywords(cfg) -> list[str]:
-    # Short, broad terms for boards that need a search phrase (Workday, USAJOBS).
-    return ["logistics", "supply chain", "logistician", "integrated logistics support", "product support",
-            "inventory", "quantitative analyst", "derivatives", "equity research"]
+def search_keywords(track: str) -> list[str]:
+    # Short, broad terms for boards that need a search phrase (Workday, Eightfold).
+    if track == "benchmark":
+        return ["quantitative", "derivatives", "equity research", "investment analyst", "hedge fund"]
+    return ["logistics", "supply chain", "logistician", "integrated logistics support", "product support", "inventory"]
 
 
 def main(argv=None):
@@ -196,12 +232,10 @@ def main(argv=None):
     ap.add_argument("--out", default=str(ROOT / "private" / "runs" / dt.date.today().isoformat() / "jobs.jsonl"))
     ap.add_argument("--companies", default=str(HERE / "companies.csv"))
     ap.add_argument("--only", help="fetch one company by name")
-    ap.add_argument("--no-usajobs", action="store_true")
     a = ap.parse_args(argv)
 
     cfg = json.loads((HERE / "config.json").read_text())
     days = cfg["posted_within_days"]
-    kws = search_keywords(cfg)
     out = Path(a.out)
     out.parent.mkdir(parents=True, exist_ok=True)
 
@@ -209,34 +243,31 @@ def main(argv=None):
             if (r.get("keep") or "yes").strip().lower() != "no"]
     if a.only:
         rows = [r for r in rows if r["name"].lower() == a.only.lower()]
-    count, failed, unmapped = 0, [], []
-    with out.open("w") as f:
-        for r in rows:
-            ats, slug = (r.get("ats") or "").strip(), (r.get("slug") or "").strip()
-            if ats not in ADAPTERS or not slug:
-                unmapped.append(r["name"])
-                continue
+    mapped = [r for r in rows if (r.get("ats") or "").strip() in ADAPTERS and (r.get("slug") or "").strip()]
+    unmapped = [r["name"] for r in rows if r not in mapped]
+
+    def run(r):
+        kws = search_keywords(r.get("track", "apply"))
+        found = []
+        for j in ADAPTERS[r["ats"].strip()](r["name"], r["slug"].strip(), keywords=kws, max_days=days):
+            j["category"] = r.get("category", "")
+            found.append(j)
+        return found
+
+    count, failed = 0, []
+    with out.open("w") as f, ThreadPoolExecutor(8) as ex:
+        futures = {ex.submit(run, r): r for r in mapped}
+        for fut in as_completed(futures):
+            r = futures[fut]
             try:
-                n = 0
-                for j in ADAPTERS[ats](r["name"], slug, keywords=kws, max_days=days):
-                    j["category"] = r.get("category", "")
-                    f.write(json.dumps(j) + "\n")
-                    n += 1
-                count += n
-                print(f"  {r['name']:<40} {ats:<10} {n:>4} jobs", file=sys.stderr)
+                found = fut.result()
             except Exception as e:  # one bad board must not stop the run
-                failed.append(f"{r['name']} ({ats}): {e}")
-        if not a.no_usajobs and not a.only:
-            try:
-                n = 0
-                for j in usajobs(keywords=["logistics", "logistician", "supply", "integrated logistics support", "inventory management"], max_days=days):
-                    j["category"] = "federal"
-                    f.write(json.dumps(j) + "\n")
-                    n += 1
-                count += n
-                print(f"  {'USAJOBS':<40} {'usajobs':<10} {n:>4} jobs", file=sys.stderr)
-            except Exception as e:
-                failed.append(f"USAJOBS: {e}")
+                failed.append(f"{r['name']} ({r['ats']}): {e}")
+                continue
+            for j in found:
+                f.write(json.dumps(j) + "\n")
+            count += len(found)
+            print(f"  {r['name']:<40} {r['ats']:<10} {len(found):>4} jobs", file=sys.stderr)
 
     print(f"\n{count} postings -> {out}", file=sys.stderr)
     if failed:

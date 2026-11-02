@@ -1,48 +1,48 @@
 name,category,track,region_hint,keep,ats,slug,careers_url,notes
-Lockheed Martin,defense_prime,apply,Syracuse NY; Moorestown NJ; DC area,yes,,,,
-Northrop Grumman,defense_prime,apply,DC area,yes,,,,
-General Dynamics Information Technology,defense_prime,apply,DC area,yes,,,,
+Lockheed Martin,defense_prime,apply,Syracuse NY; Moorestown NJ; DC area,yes,eightfold,lockheedmartin.eightfold.ai|lockheedmartin.com,https://www.lockheedmartin.com/en-us/careers.html,verified via live board
+Northrop Grumman,defense_prime,apply,DC area,yes,workday,ngc.wd1.myworkdayjobs.com/ngc/Northrop_Grumman_External_Site,,verified via live board
+General Dynamics Information Technology,defense_prime,apply,DC area,yes,workday,gdit.wd5.myworkdayjobs.com/gdit/External_Career_Site,,verified via live board
 General Dynamics Electric Boat,defense_prime,apply,,yes,,,,
 BAE Systems,defense_prime,apply,DC area,yes,,,,
 L3Harris Technologies,defense_prime,apply,,yes,,,,
-"RTX (Raytheon, Collins, Pratt & Whitney)",defense_prime,apply,DC area,yes,,,,
-Boeing,defense_prime,apply,Philadelphia (Ridley Park PA); DC area,yes,,,,
+"RTX (Raytheon, Collins, Pratt & Whitney)",defense_prime,apply,DC area,yes,workday,globalhr.wd5.myworkdayjobs.com/globalhr/REC_RTX_Ext_Gateway,,verified via live board
+Boeing,defense_prime,apply,Philadelphia (Ridley Park PA); DC area,yes,workday,boeing.wd1.myworkdayjobs.com/boeing/EXTERNAL_CAREERS,,workday board found
 Huntington Ingalls Industries,defense_prime,apply,,yes,,,,
 Leonardo DRS,defense_prime,apply,DC area,yes,,,,
 Textron,defense_prime,apply,,yes,,,,
 General Atomics,defense_prime,apply,,yes,,,,
-Sierra Nevada Corporation,defense_prime,apply,,yes,,,,
+Sierra Nevada Corporation,defense_prime,apply,,yes,workday,snc.wd1.myworkdayjobs.com/snc/SNC_External_Career_Site,,verified via live board
 Oshkosh Defense,defense_prime,apply,,yes,,,,
 AM General,defense_prime,apply,,yes,,,,
 Honeywell Aerospace,defense_prime,apply,,yes,,,,
-GE Aerospace,defense_prime,apply,,yes,,,,
+GE Aerospace,defense_prime,apply,,yes,workday,geaerospace.wd5.myworkdayjobs.com/geaerospace/GE_ExternalSite,,verified via live board
 Rolls-Royce North America,defense_prime,apply,DC area,yes,,,,
-Curtiss-Wright,defense_prime,apply,,yes,,,,
+Curtiss-Wright,defense_prime,apply,,yes,workday,curtisswright.wd1.myworkdayjobs.com/curtisswright/CW_External_Career_Site,,workday board found
 Mercury Systems,defense_prime,apply,,yes,,,,
 Kratos Defense,defense_prime,apply,,yes,,,,
 AeroVironment,defense_prime,apply,,yes,,,,
-Moog,defense_prime,apply,,yes,,,,
+Moog,defense_prime,apply,,yes,workday,moog.wd5.myworkdayjobs.com/moog/MOOG_External_Career_Site,,workday board found
 Elbit America,defense_prime,apply,,yes,,,,
 Rheinmetall American,defense_prime,apply,,yes,,,,
 Saab Inc,defense_prime,apply,Syracuse NY,yes,,,,
 SRC Inc,defense_prime,apply,Syracuse NY,yes,,,,
-Anduril Industries,defense_prime,apply,,yes,,,,
-Shield AI,defense_prime,apply,,yes,,,,
-Saronic,defense_prime,apply,,yes,,,,
+Anduril Industries,defense_prime,apply,,yes,greenhouse,andurilindustries,, board found by name guess; check it is the right company
+Shield AI,defense_prime,apply,,yes,lever,shieldai,, board found by name guess; check it is the right company
+Saronic,defense_prime,apply,,yes,ashby,saronic,, board found by name guess; check it is the right company
 Fairbanks Morse Defense,defense_prime,apply,,yes,,,,
-Austal USA,defense_prime,apply,,yes,,,,
+Austal USA,defense_prime,apply,,yes,workday,austalusa.wd1.myworkdayjobs.com/austalusa/austal,,workday board found
 Hanwha Philly Shipyard,defense_prime,apply,Philadelphia,yes,,,,
 Fincantieri Marinette Marine,defense_prime,apply,,yes,,,,
-Cubic,defense_prime,apply,,yes,,,,
+Cubic,defense_prime,apply,,yes,workday,cubic.wd1.myworkdayjobs.com/cubic/cubic_USA_careers,,verified via live board
 Bell Textron,defense_prime,apply,,yes,,,,
-Leidos,defense_services,apply,DC area,yes,,,,
+Leidos,defense_services,apply,DC area,yes,workday,leidos.wd5.myworkdayjobs.com/leidos/External,,verified via live board
 SAIC,defense_services,apply,DC area,yes,,,,
-Booz Allen Hamilton,defense_services,apply,DC area,yes,,,,
-CACI,defense_services,apply,DC area,yes,,,,
-ManTech,defense_services,apply,DC area,yes,,,,
-Parsons,defense_services,apply,DC area,yes,,,,
-KBR,defense_services,apply,DC area,yes,,,,
-Amentum,defense_services,apply,DC area,yes,,,,
+Booz Allen Hamilton,defense_services,apply,DC area,yes,workday,bah.wd1.myworkdayjobs.com/bah/BAH_Jobs,,verified via live board
+CACI,defense_services,apply,DC area,yes,workday,caci.wd1.myworkdayjobs.com/caci/External,,verified via live board
+ManTech,defense_services,apply,DC area,yes,workday,mantech.wd1.myworkdayjobs.com/mantech/External,,verified via live board
+Parsons,defense_services,apply,DC area,yes,workday,parsons.wd5.myworkdayjobs.com/parsons/Search,,verified via live board
+KBR,defense_services,apply,DC area,yes,workday,kbr.wd5.myworkdayjobs.com/kbr/KBR_Careers,,verified via live board
+Amentum,defense_services,apply,DC area,yes,workday,pae.wd1.myworkdayjobs.com/pae/Amentum_Careers,,verified via live board
 V2X,defense_services,apply,DC area,yes,,,,
 Peraton,defense_services,apply,DC area,yes,,,,
 Jacobs,defense_services,apply,,yes,,,,
@@ -68,21 +68,21 @@ Q.E.D. Systems,defense_services,apply,,yes,,,,
 Precise Systems,defense_services,apply,DC area,yes,,,,
 DLH,defense_services,apply,DC area,yes,,,,
 DHL,logistics_3pl_freight,apply,Philadelphia; NYC metro,yes,,,,
-UPS,logistics_3pl_freight,apply,,yes,,,,
-FedEx,logistics_3pl_freight,apply,,yes,,,,
+UPS,logistics_3pl_freight,apply,,yes,workday,hcmportal.wd5.myworkdayjobs.com/hcmportal/search,,verified via live board
+FedEx,logistics_3pl_freight,apply,,yes,,,,Workday tenant found is FedEx Latin America only; US jobs are on careers.fedex.com
 XPO,logistics_3pl_freight,apply,,yes,,,,
 GXO Logistics,logistics_3pl_freight,apply,,yes,,,,
-C.H. Robinson,logistics_3pl_freight,apply,,yes,,,,
-Ryder System,logistics_3pl_freight,apply,,yes,,,,
-J.B. Hunt,logistics_3pl_freight,apply,,yes,,,,
+C.H. Robinson,logistics_3pl_freight,apply,,yes,workday,chrobinson.wd5.myworkdayjobs.com/chrobinson/CHRobinson,,workday board found
+Ryder System,logistics_3pl_freight,apply,,yes,workday,ryder.wd5.myworkdayjobs.com/ryder/RyderCareers,,workday board found from a short-name guess; check it is the right company
+J.B. Hunt,logistics_3pl_freight,apply,,yes,workday,jbhunt.wd501.myworkdayjobs.com/jbhunt/Careers,,workday board found
 Penske Logistics,logistics_3pl_freight,apply,,yes,,,,
 Expeditors,logistics_3pl_freight,apply,,yes,,,,
 Kuehne+Nagel,logistics_3pl_freight,apply,,yes,,,,
 DSV,logistics_3pl_freight,apply,,yes,,,,
 CEVA Logistics,logistics_3pl_freight,apply,,yes,,,,
-Maersk,logistics_3pl_freight,apply,,yes,,,,
-Flexport,logistics_3pl_freight,apply,,yes,,,,
-Uber Freight,logistics_3pl_freight,apply,,yes,,,,
+Maersk,logistics_3pl_freight,apply,,yes,workday,maersk.wd3.myworkdayjobs.com/maersk/Maersk_Careers,,verified via live board
+Flexport,logistics_3pl_freight,apply,,yes,greenhouse,flexport,, board found by name guess; check it is the right company
+Uber Freight,logistics_3pl_freight,apply,,yes,greenhouse,uberfreight,, board found by name guess; check it is the right company
 RXO,logistics_3pl_freight,apply,,yes,,,,
 Schneider National,logistics_3pl_freight,apply,,yes,,,,
 Americold,logistics_3pl_freight,apply,,yes,,,,
@@ -93,10 +93,10 @@ Kenco Logistics,logistics_3pl_freight,apply,,yes,,,,
 Radial,logistics_3pl_freight,apply,Philadelphia (King of Prussia PA),yes,,,,
 Saddle Creek Logistics,logistics_3pl_freight,apply,,yes,,,,
 ArcBest,logistics_3pl_freight,apply,,yes,,,,
-Old Dominion Freight Line,logistics_3pl_freight,apply,,yes,,,,
+Old Dominion Freight Line,logistics_3pl_freight,apply,,yes,workday,odfl.wd1.myworkdayjobs.com/odfl/ODFL_Careers,,workday board found from a short-name guess; check it is the right company
 Crowley,logistics_3pl_freight,apply,,yes,,,,
 Matson,logistics_3pl_freight,apply,,yes,,,,
-Atlas Air,logistics_3pl_freight,apply,,yes,,,,
+Atlas Air,logistics_3pl_freight,apply,,yes,greenhouse,atlasair,, board found by name guess; check it is the right company
 Hapag-Lloyd,logistics_3pl_freight,apply,,yes,,,,
 Mediterranean Shipping Company (USA),logistics_3pl_freight,apply,NYC metro,yes,,,,
 Life Support International,logistics_3pl_freight,apply,Philadelphia (Langhorne PA),yes,,,,
@@ -109,17 +109,17 @@ PhilaPort,transit_ports_public,apply,Philadelphia,yes,,,,
 WMATA,transit_ports_public,apply,DC area,yes,,,,
 Amazon,retail_cpg_supply_chain,apply,,yes,,,,
 Walmart,retail_cpg_supply_chain,apply,,yes,,,,
-Target,retail_cpg_supply_chain,apply,,yes,,,,
-Johnson & Johnson,retail_cpg_supply_chain,apply,NYC metro (New Brunswick NJ),yes,,,,
-Church & Dwight,retail_cpg_supply_chain,apply,Ewing NJ,yes,,,,
-Campbell's,retail_cpg_supply_chain,apply,Philadelphia (Camden NJ),yes,,,,
+Target,retail_cpg_supply_chain,apply,,yes,workday,target.wd5.myworkdayjobs.com/target/targetcareers,,workday board found
+Johnson & Johnson,retail_cpg_supply_chain,apply,NYC metro (New Brunswick NJ),yes,workday,jj.wd5.myworkdayjobs.com/jj/JJ,,verified via live board
+Church & Dwight,retail_cpg_supply_chain,apply,Ewing NJ,yes,workday,churchdwight.wd1.myworkdayjobs.com/churchdwight/chdcareers,,workday board found
+Campbell's,retail_cpg_supply_chain,apply,Philadelphia (Camden NJ),yes,workday,campbellsoup.wd5.myworkdayjobs.com/campbellsoup/ExternalCareers_GlobalSite,,verified via live board
 Aramark,retail_cpg_supply_chain,apply,Philadelphia,yes,,,,
 Comcast,retail_cpg_supply_chain,apply,Philadelphia,yes,,,,
-Burlington Stores,retail_cpg_supply_chain,apply,NYC metro,yes,,,,
+Burlington Stores,retail_cpg_supply_chain,apply,NYC metro,yes,workday,burlington.wd5.myworkdayjobs.com/burlington/BurlingtonCareers,,workday board found from a short-name guess; check it is the right company
 Wakefern Food,retail_cpg_supply_chain,apply,NYC metro,yes,,,,
 Mondelez International,retail_cpg_supply_chain,apply,,yes,,,,
 PepsiCo,retail_cpg_supply_chain,apply,NYC metro,yes,,,,
-Unilever,retail_cpg_supply_chain,apply,NYC metro,yes,,,,
+Unilever,retail_cpg_supply_chain,apply,NYC metro,yes,greenhouse,unilever,, board found by name guess; check it is the right company
 Colgate-Palmolive,retail_cpg_supply_chain,apply,NYC metro,yes,,,,
 Hershey,retail_cpg_supply_chain,apply,,yes,,,,
 McCormick,retail_cpg_supply_chain,apply,DC area (Hunt Valley MD),yes,,,,
@@ -128,91 +128,94 @@ Sodexo,retail_cpg_supply_chain,apply,DC area,yes,,,,
 Ahold Delhaize USA,retail_cpg_supply_chain,apply,,yes,,,,
 Wegmans,retail_cpg_supply_chain,apply,,yes,,,,
 Raymour & Flanigan,retail_cpg_supply_chain,apply,Syracuse NY,yes,,,,
-Carrier,retail_cpg_supply_chain,apply,Syracuse NY,yes,,,,
-Micron Technology,retail_cpg_supply_chain,apply,Syracuse NY,yes,,,,
+Carrier,retail_cpg_supply_chain,apply,Syracuse NY,yes,workday,carrier.wd5.myworkdayjobs.com/carrier/jobs,,verified via live board
+Micron Technology,retail_cpg_supply_chain,apply,Syracuse NY,yes,workday,micron.wd1.myworkdayjobs.com/micron/External,,verified via live board
 Corning,retail_cpg_supply_chain,apply,,yes,,,,
 INFICON,retail_cpg_supply_chain,apply,Syracuse NY,yes,,,,
 Siemens,retail_cpg_supply_chain,apply,,yes,,,,
 Honeywell,retail_cpg_supply_chain,apply,,yes,,,,
 Under Armour,retail_cpg_supply_chain,apply,,yes,,,,
-Merck,pharma_med_supply_chain,apply,NYC metro,yes,,,,
-Pfizer,pharma_med_supply_chain,apply,NYC metro,yes,,,,
-Bristol Myers Squibb,pharma_med_supply_chain,apply,Princeton NJ,yes,,,,
+Merck,pharma_med_supply_chain,apply,NYC metro,yes,workday,msd.wd5.myworkdayjobs.com/msd/SearchJobs,,verified via live board
+Pfizer,pharma_med_supply_chain,apply,NYC metro,yes,workday,pfizer.wd1.myworkdayjobs.com/pfizer/PfizerCareers,,workday board found
+Bristol Myers Squibb,pharma_med_supply_chain,apply,Princeton NJ,yes,workday,bristolmyerssquibb.wd5.myworkdayjobs.com/bristolmyerssquibb/BMS,,workday board found
 Novo Nordisk,pharma_med_supply_chain,apply,Princeton NJ (Plainsboro),yes,,,,
-Sanofi,pharma_med_supply_chain,apply,NYC metro,yes,,,,
-Novartis,pharma_med_supply_chain,apply,NYC metro,yes,,,,
-GSK,pharma_med_supply_chain,apply,Philadelphia,yes,,,,
+Sanofi,pharma_med_supply_chain,apply,NYC metro,yes,workday,sanofi.wd3.myworkdayjobs.com/sanofi/SanofiCareers,,workday board found
+Novartis,pharma_med_supply_chain,apply,NYC metro,yes,workday,novartis.wd3.myworkdayjobs.com/novartis/Novartis_Careers,,workday board found
+GSK,pharma_med_supply_chain,apply,Philadelphia,yes,workday,gsk.wd5.myworkdayjobs.com/gsk/GSKCareers,,workday board found
 Cencora,pharma_med_supply_chain,apply,Philadelphia (Conshohocken PA),yes,,,,
-McKesson,pharma_med_supply_chain,apply,,yes,,,,
-Cardinal Health,pharma_med_supply_chain,apply,,yes,,,,
-Catalent,pharma_med_supply_chain,apply,NYC metro,yes,,,,
+McKesson,pharma_med_supply_chain,apply,,yes,workday,mckesson.wd3.myworkdayjobs.com/mckesson/External_Careers,,verified via live board
+Cardinal Health,pharma_med_supply_chain,apply,,yes,workday,cardinalhealth.wd1.myworkdayjobs.com/cardinalhealth/EXT,,workday board found
+Catalent,pharma_med_supply_chain,apply,NYC metro,yes,workday,catalent.wd1.myworkdayjobs.com/catalent/External,,workday board found
 West Pharmaceutical Services,pharma_med_supply_chain,apply,Philadelphia (Exton PA),yes,,,,
 Teva Pharmaceuticals USA,pharma_med_supply_chain,apply,NYC metro,yes,,,,
-Zoetis,pharma_med_supply_chain,apply,NYC metro,yes,,,,
-Becton Dickinson,pharma_med_supply_chain,apply,NYC metro,yes,,,,
+Zoetis,pharma_med_supply_chain,apply,NYC metro,yes,workday,zoetis.wd5.myworkdayjobs.com/zoetis/broadbean_external,,workday board found
+Becton Dickinson,pharma_med_supply_chain,apply,NYC metro,yes,workday,bdx.wd1.myworkdayjobs.com/bdx/EXTERNAL_CAREER_SITE_USA,,verified via live board
 Integra LifeSciences,pharma_med_supply_chain,apply,Princeton NJ,yes,,,,
 Two Sigma,finance_quant_trading,benchmark,NYC,yes,,,,
 Citadel,finance_quant_trading,benchmark,NYC,yes,,,,
 Citadel Securities,finance_quant_trading,benchmark,NYC,yes,,,,
-Jane Street,finance_quant_trading,benchmark,NYC,yes,,,,
+Jane Street,finance_quant_trading,benchmark,NYC,yes,greenhouse,janestreet,, board found by name guess; check it is the right company
 Hudson River Trading,finance_quant_trading,benchmark,NYC,yes,,,,
 D. E. Shaw,finance_quant_trading,benchmark,NYC,yes,,,,
 Millennium,finance_quant_trading,benchmark,NYC,yes,,,,
-Point72,finance_quant_trading,benchmark,NYC metro,yes,,,,
+Point72,finance_quant_trading,benchmark,NYC metro,yes,greenhouse,point72,, board found by name guess; check it is the right company
 Cubist Systematic Strategies,finance_quant_trading,benchmark,NYC,yes,,,,
 Bridgewater Associates,finance_quant_trading,benchmark,,yes,,,,
 AQR Capital Management,finance_quant_trading,benchmark,,yes,,,,
 Susquehanna International Group,finance_quant_trading,benchmark,Philadelphia (Bala Cynwyd PA),yes,,,,
-Jump Trading,finance_quant_trading,benchmark,NYC,yes,,,,
-Optiver,finance_quant_trading,benchmark,,yes,,,,
+Jump Trading,finance_quant_trading,benchmark,NYC,yes,greenhouse,jumptrading,, board found by name guess; check it is the right company
+Optiver,finance_quant_trading,benchmark,,yes,greenhouse,optiver,, board found by name guess; check it is the right company
 IMC Trading,finance_quant_trading,benchmark,,yes,,,,
 DRW,finance_quant_trading,benchmark,,yes,,,,
-Tower Research Capital,finance_quant_trading,benchmark,NYC,yes,,,,
+Tower Research Capital,finance_quant_trading,benchmark,NYC,yes,greenhouse,towerresearchcapital,, board found by name guess; check it is the right company
 Virtu Financial,finance_quant_trading,benchmark,NYC,yes,,,,
-Akuna Capital,finance_quant_trading,benchmark,,yes,,,,
+Akuna Capital,finance_quant_trading,benchmark,,yes,greenhouse,akunacapital,, board found by name guess; check it is the right company
 Five Rings,finance_quant_trading,benchmark,NYC,yes,,,,
-Squarepoint Capital,finance_quant_trading,benchmark,NYC,yes,,,,
+Squarepoint Capital,finance_quant_trading,benchmark,NYC,yes,greenhouse,squarepointcapital,, board found by name guess; check it is the right company
 Balyasny Asset Management,finance_quant_trading,benchmark,NYC,yes,,,,
 Schonfeld Strategic Advisors,finance_quant_trading,benchmark,NYC,yes,,,,
-ExodusPoint,finance_quant_trading,benchmark,NYC,yes,,,,
+ExodusPoint,finance_quant_trading,benchmark,NYC,yes,greenhouse,exoduspoint,, board found by name guess; check it is the right company
 Man Group,finance_quant_trading,benchmark,NYC,yes,,,,
-PDT Partners,finance_quant_trading,benchmark,NYC,yes,,,,
-WorldQuant,finance_quant_trading,benchmark,,yes,,,,
-Flow Traders,finance_quant_trading,benchmark,NYC,yes,,,,
+PDT Partners,finance_quant_trading,benchmark,NYC,yes,greenhouse,pdtpartners,, board found by name guess; check it is the right company
+WorldQuant,finance_quant_trading,benchmark,,yes,greenhouse,worldquant,, board found by name guess; check it is the right company
+Flow Traders,finance_quant_trading,benchmark,NYC,yes,greenhouse,flowtraders,, board found by name guess; check it is the right company
 Goldman Sachs,finance_banks_markets,benchmark,NYC,yes,,,,
 Morgan Stanley,finance_banks_markets,benchmark,NYC,yes,,,,
 JPMorgan Chase,finance_banks_markets,benchmark,NYC,yes,,,,
 Citi,finance_banks_markets,benchmark,NYC,yes,,,,
 Bank of America,finance_banks_markets,benchmark,NYC,yes,,,,
-Barclays,finance_banks_markets,benchmark,NYC,yes,,,,
+Barclays,finance_banks_markets,benchmark,NYC,yes,workday,barclays.wd3.myworkdayjobs.com/barclays/External_Career_Site_Barclays,,workday board found
 BNP Paribas,finance_banks_markets,benchmark,NYC,yes,,,,
 Deutsche Bank,finance_banks_markets,benchmark,NYC,yes,,,,
 UBS,finance_banks_markets,benchmark,NYC,yes,,,,
 Nomura,finance_banks_markets,benchmark,NYC,yes,,,,
-Mizuho,finance_banks_markets,benchmark,NYC,yes,,,,
+Mizuho,finance_banks_markets,benchmark,NYC,yes,workday,mizuho.wd1.myworkdayjobs.com/mizuho/mizuhoamericas,,workday board found
 MUFG,finance_banks_markets,benchmark,NYC,yes,,,,
 Wells Fargo,finance_banks_markets,benchmark,,yes,,,,
 Jefferies,finance_banks_markets,benchmark,NYC,yes,,,,
 Evercore,finance_banks_markets,benchmark,NYC,yes,,,,
 Lazard,finance_banks_markets,benchmark,NYC,yes,,,,
-Capital One,finance_banks_markets,benchmark,DC area (McLean VA),yes,,,,
+Capital One,finance_banks_markets,benchmark,DC area (McLean VA),yes,workday,capitalone.wd12.myworkdayjobs.com/capitalone/Capital_One,,workday board found
 Freddie Mac,finance_banks_markets,benchmark,DC area (McLean VA),yes,,,,
-Fannie Mae,finance_banks_markets,benchmark,DC area,yes,,,,
-Nasdaq,finance_banks_markets,benchmark,NYC,yes,,,,
+Fannie Mae,finance_banks_markets,benchmark,DC area,yes,workday,fanniemae.wd1.myworkdayjobs.com/fanniemae/FannieMaeCareers,,workday board found
+Nasdaq,finance_banks_markets,benchmark,NYC,yes,greenhouse,nasdaq,, board found by name guess; check it is the right company
 Intercontinental Exchange (NYSE),finance_banks_markets,benchmark,NYC,yes,,,,
-Cboe Global Markets,finance_banks_markets,benchmark,,yes,,,,
+Cboe Global Markets,finance_banks_markets,benchmark,,yes,workday,cboe.wd1.myworkdayjobs.com/cboe/External_Career_CBOE,,workday board found from a short-name guess; check it is the right company
 Tradeweb,finance_banks_markets,benchmark,NYC,yes,,,,
-BlackRock,finance_asset_mgmt_data,benchmark,NYC,yes,,,,
-Vanguard,finance_asset_mgmt_data,benchmark,Philadelphia (Malvern PA),yes,,,,
+BlackRock,finance_asset_mgmt_data,benchmark,NYC,yes,workday,blackrock.wd1.myworkdayjobs.com/blackrock/BlackRock_Professional,,workday board found
+Vanguard,finance_asset_mgmt_data,benchmark,Philadelphia (Malvern PA),yes,workday,vanguard.wd5.myworkdayjobs.com/vanguard/vanguard_external,,workday board found
 Fidelity Investments,finance_asset_mgmt_data,benchmark,,yes,,,,
-State Street,finance_asset_mgmt_data,benchmark,,yes,,,,
-T. Rowe Price,finance_asset_mgmt_data,benchmark,DC area (Baltimore),yes,,,,
-Carlyle Group,finance_asset_mgmt_data,benchmark,DC area,yes,,,,
-Bloomberg,finance_asset_mgmt_data,benchmark,NYC,yes,,,,
+State Street,finance_asset_mgmt_data,benchmark,,yes,workday,statestreet.wd1.myworkdayjobs.com/statestreet/Global,,workday board found
+T. Rowe Price,finance_asset_mgmt_data,benchmark,DC area (Baltimore),yes,workday,troweprice.wd5.myworkdayjobs.com/troweprice/TRowePrice,,workday board found
+Carlyle Group,finance_asset_mgmt_data,benchmark,DC area,yes,workday,carlyle.wd1.myworkdayjobs.com/carlyle/Carlyle,,workday board found
+Bloomberg,finance_asset_mgmt_data,benchmark,NYC,yes,workday,bloomberg.wd1.myworkdayjobs.com/bloomberg/Bloombergindustrygroup_External_Career_Site,,workday board found
 MSCI,finance_asset_mgmt_data,benchmark,NYC,yes,,,,
 S&P Global,finance_asset_mgmt_data,benchmark,NYC,yes,,,,
 Moody's,finance_asset_mgmt_data,benchmark,NYC,yes,,,,
 Lincoln Financial,finance_asset_mgmt_data,benchmark,Philadelphia (Radnor PA),yes,,,,
-Prudential Financial,finance_asset_mgmt_data,benchmark,NYC metro (Newark NJ),yes,,,,
-MetLife,finance_asset_mgmt_data,benchmark,NYC,yes,,,,
-AIG,finance_asset_mgmt_data,benchmark,NYC,yes,,,,
+Prudential Financial,finance_asset_mgmt_data,benchmark,NYC metro (Newark NJ),yes,workday,prudential.wd3.myworkdayjobs.com/prudential/prudential,,workday board found from a short-name guess; check it is the right company
+MetLife,finance_asset_mgmt_data,benchmark,NYC,yes,lever,metlife,, board found by name guess; check it is the right company
+AIG,finance_asset_mgmt_data,benchmark,NYC,yes,workday,aig.wd1.myworkdayjobs.com/aig/aig,,workday board found
+CAE,defense_services,apply,,yes,workday,cae.wd3.myworkdayjobs.com/cae/career,,added: found hiring ILS/logistics roles verified via live board
+Incora,logistics_3pl_freight,apply,,yes,workday,incora.wd5.myworkdayjobs.com/incora/Incora,,added: found hiring ILS/logistics roles verified via live board
+Intrepid,defense_services,apply,,yes,workday,intrepidgs.wd108.myworkdayjobs.com/intrepidgs/People_Careers,,added: found hiring ILS/logistics roles verified via live board
