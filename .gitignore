@@ -1,2 +1,6 @@
 # Playwright MCP snapshots and screenshots
 .playwright-mcp/
+
+# Personal data: resume, profile, scored jobs, drafted answers. Never pushed (public repo).
+private/
+__pycache__/
